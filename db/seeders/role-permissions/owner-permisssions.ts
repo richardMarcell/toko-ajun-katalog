@@ -22,6 +22,7 @@ export const ownerPermissions = [
   PermissionEnum.USER_UPDATE,
   PermissionEnum.USER_DESTROY,
 
+  PermissionEnum.SALES_INDEX,
   PermissionEnum.SALES_EDIT,
   PermissionEnum.SALES_UPDATE,
 ];

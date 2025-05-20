@@ -3,7 +3,7 @@ import logOut from "@/app/_actions/log-out";
 import { Avatar } from "@/components/ui/avatar";
 import { cn, getInitials } from "@/lib/utils";
 import { useSidebarStore } from "@/store/useSidebarStore";
-import { Bell, LogOut, Search, User } from "lucide-react";
+import { LogOut, User } from "lucide-react";
 import { Session } from "next-auth";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
@@ -41,7 +41,7 @@ const Header = ({ session }: { session: Session | null }) => {
               ) : (
                 <>
                   <p className="font-bold">{userName}</p>
-                  <p className="font-medium text-xs">{userEmail}</p>
+                  <p className="text-xs font-medium">{userEmail}</p>
                 </>
               )}
             </div>

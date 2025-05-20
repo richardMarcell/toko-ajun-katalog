@@ -1,12 +1,24 @@
-import { OwnerLayout } from "@/components/internal/OwnerLayout";
-import { getAuthSession } from "@/lib/services/auth/get-user-authenticated";
+import SettingCard from "@/components/internal/SettingCard";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbList,
+} from "@/components/ui/breadcrumb";
 
 export default async function DashboardPage() {
-  const session = await getAuthSession();
-
   return (
-    <OwnerLayout session={session}>
+    <SettingCard title="Dashboard" breadcrumb={<PageBreadcrumb />}>
       <div></div>
-    </OwnerLayout>
+    </SettingCard>
+  );
+}
+
+function PageBreadcrumb() {
+  return (
+    <Breadcrumb>
+      <BreadcrumbList className="text-md text-blue-600">
+        <BreadcrumbItem>Dashboard</BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
   );
 }
