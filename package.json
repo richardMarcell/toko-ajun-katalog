@@ -7,12 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "drizzle-kit-migrate": "npx drizzle-kit migrate --config=drizzle.config.ts",
-    "drizzle-kit-seed": "tsx --env-file .env ./db/seed.ts",
-    "drizzle-kit-seed-deploy": "tsx --env-file .env ./db/seed-deployment.ts",
-    "test:migrate-db": "npx drizzle-kit migrate --config=drizzle-test.config.ts",
-    "test:reset-db": "NODE_ENV=test tsx --env-file=.env.testing ./db/reset-test-database.ts",
-    "test:seed-db": "NODE_ENV=test tsx --env-file=.env.testing ./db/seed.ts"
+    "drizzle-kit-seed": "tsx --env-file .env ./db/seed.ts"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.4",

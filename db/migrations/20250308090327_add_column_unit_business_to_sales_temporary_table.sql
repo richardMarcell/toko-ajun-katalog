@@ -1,2 +1,0 @@
-ALTER TABLE `sales_temporary` ADD `unit_business` varchar(255) NOT NULL;--> statement-breakpoint
-ALTER TABLE `sales_temporary` ADD CONSTRAINT `sales_temporary_unit_business_unique` UNIQUE(`unit_business`);

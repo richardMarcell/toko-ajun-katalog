@@ -1,1 +1,0 @@
-ALTER TABLE `stocks` MODIFY COLUMN `qty` int;

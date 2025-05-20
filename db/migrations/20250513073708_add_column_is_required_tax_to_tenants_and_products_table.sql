@@ -1,2 +1,0 @@
-ALTER TABLE `products` ADD `is_required_tax` boolean DEFAULT true NOT NULL AFTER `is_rentable`;--> statement-breakpoint
-ALTER TABLE `tenants` ADD `is_required_tax` boolean DEFAULT true NOT NULL AFTER `ip_address`;

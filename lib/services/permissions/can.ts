@@ -1,11 +1,9 @@
 import { db } from "@/db";
-import { ipLocations, permissions, roles, userHasRoles } from "@/db/schema";
+import { permissions, roles, userHasRoles } from "@/db/schema";
 import { roleHasPermissions } from "@/db/schema/role-has-permissions";
 import { User } from "@/types/next-auth";
 import { and, eq, inArray } from "drizzle-orm";
 import { forbidden } from "next/navigation";
-import getClientIp from "../auth/get-client-ip";
-import { ipLocationHasPermissions } from "@/db/schema/ip-location-has-permissions";
 
 export async function can({
   permissionNames,
@@ -22,16 +20,8 @@ export async function can({
     userRoleIds,
   });
 
-  const ipAddress = await getClientIp();
-  const ipLocationIds = await getIpLocationId({ ipAddress });
-
-  const isIpLocationAuthorized = await getIpLocationAuthorized({
-    permissionNames,
-    ipLocationIds,
-  });
-
   if (isRedirectToForbiddenPage) {
-    if (!isAuthorized || !isIpLocationAuthorized) return forbidden();
+    if (!isAuthorized) return forbidden();
   }
 
   return isAuthorized;
@@ -75,49 +65,4 @@ async function getUserAuthorized({
     );
 
   return userPermissions.length > 0;
-}
-
-async function getIpLocationId({
-  ipAddress,
-}: {
-  ipAddress: string;
-}): Promise<bigint[]> {
-  const ipLocationsList = await db
-    .select({ id: ipLocations.id })
-    .from(ipLocations)
-    .where(eq(ipLocations.ip_address, ipAddress));
-
-  return ipLocationsList.map((ipLocation) => ipLocation.id);
-}
-
-async function getIpLocationAuthorized({
-  permissionNames,
-  ipLocationIds,
-}: {
-  permissionNames: string[];
-  ipLocationIds: bigint[];
-}): Promise<boolean> {
-  const ipLocationPermissions = await db
-    .select({
-      ip_address: ipLocations.ip_address,
-      permission_group: permissions.group,
-      permission_name: permissions.name,
-    })
-    .from(ipLocationHasPermissions)
-    .leftJoin(
-      ipLocations,
-      eq(ipLocations.id, ipLocationHasPermissions.ip_location_id),
-    )
-    .leftJoin(
-      permissions,
-      eq(permissions.id, ipLocationHasPermissions.permission_id),
-    )
-    .where(
-      and(
-        inArray(ipLocationHasPermissions.ip_location_id, ipLocationIds),
-        inArray(permissions.name, permissionNames),
-      ),
-    );
-
-  return ipLocationPermissions.length > 0;
 }

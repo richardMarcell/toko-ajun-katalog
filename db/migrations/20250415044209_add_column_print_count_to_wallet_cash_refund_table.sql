@@ -1,2 +1,0 @@
-ALTER TABLE `wallet_cash_refund_details` MODIFY COLUMN `item_qty` int unsigned NOT NULL;--> statement-breakpoint
-ALTER TABLE `wallet_cash_refunds` ADD `print_count` int unsigned DEFAULT 0 NOT NULL AFTER `total_refund`;

@@ -1,11 +1,9 @@
 import { db } from "@/db";
-import { ipLocations, sessions } from "@/db/schema";
-import getClientIp from "@/lib/services/auth/get-client-ip";
+import { sessions } from "@/db/schema";
 import { getCurrentDate } from "@/lib/utils";
-import { DatabaseTransaction } from "@/types/db-transaction";
 import { differenceInSeconds } from "date-fns";
 import { eq } from "drizzle-orm";
-import { getToken, JWT } from "next-auth/jwt";
+import { getToken } from "next-auth/jwt";
 import { redirect } from "next/navigation";
 import { NextRequest } from "next/server";
 
@@ -44,9 +42,6 @@ export async function GET(request: NextRequest) {
     currentDate.setHours(currentDate.getHours() + 12);
 
     await db.transaction(async (tx) => {
-      // Update ip locations table with new user as current user logged in
-      await updateIpLocations({ user, tx });
-
       // Store jwt to session table
       await tx.insert(sessions).values({
         jwt: token,
@@ -67,39 +62,4 @@ function getDiffTimeInSecounds({ iat }: { iat: number }) {
   const diffTime = differenceInSeconds(currentDatetime, userTokenIssuedAt);
 
   return diffTime;
-}
-
-async function updateIpLocations({
-  user,
-  tx,
-}: {
-  user: JWT;
-  tx: DatabaseTransaction;
-}) {
-  const clientIp = await getClientIp();
-
-  const ipLocation = await tx.query.ipLocations.findFirst({
-    where: eq(ipLocations.ip_address, clientIp),
-  });
-
-  if (ipLocation) {
-    const userId = ipLocation.current_logged_in_user;
-    if (userId) {
-      await tx.delete(sessions).where(eq(sessions.user_id, userId));
-    }
-
-    await tx
-      .update(ipLocations)
-      .set({
-        current_logged_in_user: null,
-      })
-      .where(eq(ipLocations.current_logged_in_user, BigInt(user.id)));
-
-    await tx
-      .update(ipLocations)
-      .set({
-        current_logged_in_user: BigInt(user.id),
-      })
-      .where(eq(ipLocations.id, ipLocation.id));
-  }
 }

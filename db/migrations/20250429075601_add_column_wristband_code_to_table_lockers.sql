@@ -1,2 +1,0 @@
-ALTER TABLE `lockers` ADD `wristband_code` varchar(255) NOT NULL AFTER `product_id`;--> statement-breakpoint
-ALTER TABLE `lockers` ADD CONSTRAINT `lockers_wristband_code_wristbands_code_fk` FOREIGN KEY (`wristband_code`) REFERENCES `wristbands`(`code`) ON DELETE restrict ON UPDATE no action;

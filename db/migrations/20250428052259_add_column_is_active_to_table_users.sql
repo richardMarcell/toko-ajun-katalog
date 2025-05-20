@@ -1,1 +1,0 @@
-ALTER TABLE `users` ADD `is_active` boolean DEFAULT true NOT NULL AFTER `email`;

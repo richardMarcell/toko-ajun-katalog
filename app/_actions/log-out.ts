@@ -1,8 +1,7 @@
 "use server";
 import { db } from "@/db";
-import { ipLocations, sessions, users } from "@/db/schema";
+import { sessions, users } from "@/db/schema";
 import { deleteAuthCookie } from "@/lib/services/auth/delete-auth-cookie";
-import getClientIp from "@/lib/services/auth/get-client-ip";
 import { and, eq } from "drizzle-orm";
 import { cookies } from "next/headers";
 
@@ -17,19 +16,8 @@ export default async function logOut({
 }: {
   userSession: User | undefined;
 }): Promise<void> {
-  const clientIp = await getClientIp();
-  await db
-    .update(ipLocations)
-    .set({
-      current_logged_in_user: null,
-    })
-    .where(eq(ipLocations.ip_address, clientIp));
-
   const cookieStore = await cookies();
-  // const jwtToken =
-  //   process.env.NODE_ENV === "production"
-  //     ? cookieStore.get("__Secure-next-auth.session-token")
-  //     : cookieStore.get("next-auth.session-token");
+
   const jwtToken = cookieStore.get("next-auth.session-token");
 
   if (!jwtToken) {

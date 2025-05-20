@@ -1,1 +1,0 @@
-ALTER TABLE `tenants` ADD `ip_address` varchar(255) NOT NULL AFTER `image`;

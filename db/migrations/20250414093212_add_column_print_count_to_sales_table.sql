@@ -1,1 +1,0 @@
-ALTER TABLE `sales` ADD `print_count` int unsigned DEFAULT 0 NOT NULL AFTER `change_amount`;
