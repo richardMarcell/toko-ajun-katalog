@@ -11,8 +11,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Qubu Resort - Satellite",
-  description: "Qubu Resort - Satellite",
+  title: "Toko Ajun",
+  description: "Toko Ajun Katalog",
 };
 
 export default async function RootLayout({

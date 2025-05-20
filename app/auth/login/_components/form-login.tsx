@@ -86,7 +86,7 @@ export function FormLogin() {
       <button
         type="submit"
         disabled={isLoading || isRedirecting}
-        className="w-full rounded-md border border-transparent bg-blue-600 px-4 py-2 text-white shadow-sm hover:bg-blue-700 disabled:bg-blue-300"
+        className="w-full rounded-md border border-transparent bg-red-600 px-4 py-2 text-white shadow-sm hover:bg-red-700 disabled:bg-red-300"
       >
         {isRedirecting ? "Redirecting..." : isLoading ? "Loading..." : "Login"}
       </button>

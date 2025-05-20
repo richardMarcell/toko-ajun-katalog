@@ -11,7 +11,7 @@ export default function NotFound() {
         Maaf, halaman yang Anda cari tidak tersedia atau telah dipindahkan.
       </p>
       <Button asChild className="bg-qubu_blue">
-        <Link href="/home">Kembali</Link>
+        <Link href="/redirect">Kembali</Link>
       </Button>
     </div>
   );

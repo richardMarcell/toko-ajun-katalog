@@ -51,7 +51,7 @@ export async function GET(request: NextRequest) {
     });
   }
 
-  return redirect("/home");
+  return redirect("/redirect");
 }
 
 function getDiffTimeInSecounds({ iat }: { iat: number }) {

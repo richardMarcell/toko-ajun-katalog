@@ -14,6 +14,7 @@ export default async function middleware(
   /* --- Skip JWT check for the login page --- */
   const pathname = req.nextUrl.pathname;
   if (pathname.startsWith("/auth/login")) return NextResponse.next();
+  if (pathname == "/") return NextResponse.next();
 
   /* --- Check client session available on database --- */
   const { isUserSessionValid } = await checkClientSession({ req });
