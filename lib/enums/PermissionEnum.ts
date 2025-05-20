@@ -1,4 +1,6 @@
 export enum PermissionEnum {
+  DASHBOARD = "dashboard",
+
   // Product
   PRODUCT_INDEX = "product-index",
   PRODUCT_CREATE = "product-create",
@@ -40,6 +42,12 @@ export function getPermissionCase(type: PermissionEnum): {
   let group = "";
 
   switch (type) {
+    // --- DASHBOARD ---
+    case PermissionEnum.DASHBOARD:
+      group = "Dashboard";
+      description = "Dashboard";
+      break;
+
     // --- PRODUCT ---
     case PermissionEnum.PRODUCT_INDEX:
       group = "Product";
