@@ -1,0 +1,1 @@
+ALTER TABLE `sales` RENAME COLUMN `unit` TO `unit_business`;

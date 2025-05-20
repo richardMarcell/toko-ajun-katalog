@@ -1,0 +1,1 @@
+ALTER TABLE `swimming_class_customer_histories` MODIFY COLUMN `sales_id` bigint unsigned;

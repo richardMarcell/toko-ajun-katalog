@@ -1,0 +1,1 @@
+ALTER TABLE `sales_details` ADD `warehouse_id` varchar(255) NOT NULL AFTER `product_id`;

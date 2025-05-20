@@ -1,0 +1,475 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1741056165320,
+      "tag": "20250304024245_first_init",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1741232665808,
+      "tag": "20250306034425_create_promos_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1741323547838,
+      "tag": "20250307045907_create_roles_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1741333366147,
+      "tag": "20250307074246_alter_column_name_unique_on_roles_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1741333631957,
+      "tag": "20250307074711_create_permissions_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1741336870658,
+      "tag": "20250307084110_create_user_has_roles_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1741337037964,
+      "tag": "20250307084357_create_role_has_permissions_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1741341322965,
+      "tag": "20250307095522_alter_nullable_some_scolumns_on_sales_food_corner_tables",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1741407170415,
+      "tag": "20250308041250_create_stocks_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1741407456138,
+      "tag": "20250308041736_alter_column_qty_on_stocks_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1741410233111,
+      "tag": "20250308050353_alter_column_name_unit_to_unit_business_on_sales_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "5",
+      "when": 1741422929722,
+      "tag": "20250308083529_create_sales_souvenir_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "5",
+      "when": 1741424607217,
+      "tag": "20250308090327_add_column_unit_business_to_sales_temporary_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "5",
+      "when": 1741424803634,
+      "tag": "20250308090643_alter_column_status_order_on_sales_details_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "5",
+      "when": 1741608163604,
+      "tag": "20250310120243_add_column_swimming_class_valid_for_to_products_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 15,
+      "version": "5",
+      "when": 1741663755527,
+      "tag": "20250311032915_create_some_tables_to_support_implementation_of_swimming_class",
+      "breakpoints": true
+    },
+    {
+      "idx": 16,
+      "version": "5",
+      "when": 1741688043702,
+      "tag": "20250311101403_create_sales_locker_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "5",
+      "when": 1741694969126,
+      "tag": "20250311120929_add_some_columns_to_swimming_class_customer_histories_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "5",
+      "when": 1741748451428,
+      "tag": "20250312030051_alter_nullable_column_sales_id_on_swimming_class_customer_histories_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "5",
+      "when": 1741775744342,
+      "tag": "20250312103544_create_some_tables_to_support_implementation_of_entry_pass",
+      "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "5",
+      "when": 1741835437643,
+      "tag": "20250313031037_drop_column_valid_for_on_entry_pass_customer_histories_table_and_sales_entry_pass_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 21,
+      "version": "5",
+      "when": 1741852400189,
+      "tag": "20250313075320_create_wristbands_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 22,
+      "version": "5",
+      "when": 1741852997048,
+      "tag": "20250313080317_create_wallets_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 23,
+      "version": "5",
+      "when": 1741854915184,
+      "tag": "20250313083515_add_column_ep_valid_term_to_products_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 24,
+      "version": "5",
+      "when": 1741923936333,
+      "tag": "20250314034536_alter_column_with_int_type_to_unsigned",
+      "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "5",
+      "when": 1741925178803,
+      "tag": "20250314040618_create_table_relate_for_wristband_rent",
+      "breakpoints": true
+    },
+    {
+      "idx": 26,
+      "version": "5",
+      "when": 1742273695179,
+      "tag": "20250318045455_add_some_columns_to_wallets_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 27,
+      "version": "5",
+      "when": 1742292487872,
+      "tag": "20250318100807_create_some_tables_related_to_swimsuit_rent",
+      "breakpoints": true
+    },
+    {
+      "idx": 28,
+      "version": "5",
+      "when": 1742373381285,
+      "tag": "20250319083621_create_table_ralated_payment_with_promo",
+      "breakpoints": true
+    },
+    {
+      "idx": 29,
+      "version": "5",
+      "when": 1742380584136,
+      "tag": "20250319103624_create_table_and_some_columns_related_dimsum_pos",
+      "breakpoints": true
+    },
+    {
+      "idx": 30,
+      "version": "5",
+      "when": 1742554852723,
+      "tag": "20250321110052_create_some_tables_and_columns_related_to_cashq_transaction",
+      "breakpoints": true
+    },
+    {
+      "idx": 31,
+      "version": "5",
+      "when": 1742790044996,
+      "tag": "20250324042044_create_some_table_for_feature_locker_rent",
+      "breakpoints": true
+    },
+    {
+      "idx": 32,
+      "version": "5",
+      "when": 1742809815007,
+      "tag": "20250324095015_create_some_table_for_feature_gazebo_rent",
+      "breakpoints": true
+    },
+    {
+      "idx": 33,
+      "version": "5",
+      "when": 1742900072701,
+      "tag": "20250325105432_create_some_tables_and_add_some_columns_related_to_ticket_sales",
+      "breakpoints": true
+    },
+    {
+      "idx": 34,
+      "version": "5",
+      "when": 1743070441911,
+      "tag": "20250327101401_alter_add_column_for_return_wristband_and_wallet",
+      "breakpoints": true
+    },
+    {
+      "idx": 35,
+      "version": "5",
+      "when": 1743144340546,
+      "tag": "20250328064540_create_some_tables_to_implement_booklet_and_promos",
+      "breakpoints": true
+    },
+    {
+      "idx": 36,
+      "version": "5",
+      "when": 1743151367207,
+      "tag": "20250328084247_create_some_tables_related_to_sales_ticket_online",
+      "breakpoints": true
+    },
+    {
+      "idx": 37,
+      "version": "5",
+      "when": 1743154435557,
+      "tag": "20250328093355_rename table sales detail swimsuit rent o swimsuit rent wallet",
+      "breakpoints": true
+    },
+    {
+      "idx": 38,
+      "version": "5",
+      "when": 1743664719431,
+      "tag": "20250403071839_create_sales_gazebo_rent_and_sales_locker_rent_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 39,
+      "version": "5",
+      "when": 1743827681338,
+      "tag": "20250405043441_add_some_columns_related_to_payment",
+      "breakpoints": true
+    },
+    {
+      "idx": 40,
+      "version": "5",
+      "when": 1743838842841,
+      "tag": "20250405074042_add_some_columns_related_with_stocks",
+      "breakpoints": true
+    },
+    {
+      "idx": 41,
+      "version": "5",
+      "when": 1743839780968,
+      "tag": "20250405075620_add_column_is_void_and_voided_by_to_sales_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 42,
+      "version": "5",
+      "when": 1743843710103,
+      "tag": "20250405090150_add_column_relate_with_void_to_sales_and_wallets_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 43,
+      "version": "5",
+      "when": 1744011208997,
+      "tag": "20250407073328_create_wallet_ticket_sale_table_add_column_subject_to_tax_to_sales_details_rename_column_to_is_send_to_scm",
+      "breakpoints": true
+    },
+    {
+      "idx": 44,
+      "version": "5",
+      "when": 1744022835361,
+      "tag": "20250407104715_add_column_product_id_on_gazebos_and_lockers_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 45,
+      "version": "5",
+      "when": 1744107585277,
+      "tag": "20250408101945_add_some_columns_to_promos_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 46,
+      "version": "5",
+      "when": 1744187580768,
+      "tag": "20250409083300_create_wallet_cash_refunds_and_wallet_cash_refund_details_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 47,
+      "version": "5",
+      "when": 1744623132556,
+      "tag": "20250414093212_add_column_print_count_to_sales_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 48,
+      "version": "5",
+      "when": 1744692129467,
+      "tag": "20250415044209_add_column_print_count_to_wallet_cash_refund_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 49,
+      "version": "5",
+      "when": 1745034929596,
+      "tag": "20250419035529_create_unit_business_promo_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 50,
+      "version": "5",
+      "when": 1745060696914,
+      "tag": "20250419110456_create_some_table_related_to_resto_patio",
+      "breakpoints": true
+    },
+    {
+      "idx": 51,
+      "version": "5",
+      "when": 1745378777661,
+      "tag": "20250423032617_add_column_wallet_history_id_to_some_tables_and_flagging_is_void_to_wallet_histories_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 52,
+      "version": "5",
+      "when": 1745407870665,
+      "tag": "20250423113110_add_some_column_related_on_captain_order",
+      "breakpoints": true
+    },
+    {
+      "idx": 53,
+      "version": "5",
+      "when": 1745567180200,
+      "tag": "20250425074620_drop_column_role_on_users_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 54,
+      "version": "5",
+      "when": 1745662202065,
+      "tag": "20250426101002_alter_some_column_related_to_promo",
+      "breakpoints": true
+    },
+    {
+      "idx": 55,
+      "version": "5",
+      "when": 1745817779297,
+      "tag": "20250428052259_add_column_is_active_to_table_users",
+      "breakpoints": true
+    },
+    {
+      "idx": 56,
+      "version": "5",
+      "when": 1745831946488,
+      "tag": "20250428091906_add_column_unit_business_to_support_multi_captain_order",
+      "breakpoints": true
+    },
+    {
+      "idx": 57,
+      "version": "5",
+      "when": 1745901862875,
+      "tag": "20250429044422_create_sessions_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 58,
+      "version": "5",
+      "when": 1745913361266,
+      "tag": "20250429075601_add_column_wristband_code_to_table_lockers",
+      "breakpoints": true
+    },
+    {
+      "idx": 59,
+      "version": "5",
+      "when": 1745922839049,
+      "tag": "20250429103359_create_table_ip_locations",
+      "breakpoints": true
+    },
+    {
+      "idx": 60,
+      "version": "5",
+      "when": 1746181399531,
+      "tag": "20250502102319_create_support_tickets_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 61,
+      "version": "5",
+      "when": 1746239669494,
+      "tag": "20250503023429_create_activity_logs_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 62,
+      "version": "5",
+      "when": 1746597558135,
+      "tag": "20250507055918_add_column_username_on_users_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 63,
+      "version": "5",
+      "when": 1746770089689,
+      "tag": "20250509055449_add_column_ip_address_to_tenants_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 64,
+      "version": "5",
+      "when": 1747121828429,
+      "tag": "20250513073708_add_column_is_required_tax_to_tenants_and_products_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 65,
+      "version": "5",
+      "when": 1747365729883,
+      "tag": "20250516032209_create_table_related_to_services_general_store_sales",
+      "breakpoints": true
+    },
+    {
+      "idx": 66,
+      "version": "5",
+      "when": 1747709531198,
+      "tag": "20250520025211_create_ip_location_has_permissions_table",
+      "breakpoints": true
+    }
+  ]
+}
