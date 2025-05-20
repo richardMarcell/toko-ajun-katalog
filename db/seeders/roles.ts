@@ -1,7 +1,7 @@
 import { db } from "@/db";
-import { roles } from "../schema";
 import { sql } from "drizzle-orm";
 import defaultRoles from "./datas/default-roles";
+import { roles } from "../schema";
 
 export async function roleSeeder() {
   const roleList: {

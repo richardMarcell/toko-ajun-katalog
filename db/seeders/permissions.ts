@@ -1,7 +1,7 @@
 import { db } from "@/db";
-import { permissions } from "../schema";
 import { sql } from "drizzle-orm";
 import { generatePermissionList } from "@/lib/enums/PermissionEnum";
+import { permissions } from "../schema";
 
 export async function permissionSeeder() {
   const permissionList = generatePermissionList();

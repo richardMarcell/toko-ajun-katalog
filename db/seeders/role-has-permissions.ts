@@ -1,9 +1,9 @@
 import { db } from "@/db";
 import { sql } from "drizzle-orm";
-import { roleHasPermissions } from "../schema/role-has-permissions";
 import { getPermissionIds } from "@/lib/services/permissions/get-permission-ids";
 import { getRoleIds } from "@/lib/services/permissions/get-role-ids";
 import defaultRoles from "./datas/default-roles";
+import { roleHasPermissions } from "../schema";
 
 export async function roleHasPermissionSeeder(): Promise<void> {
   // NOTE: empty the table before seeding
