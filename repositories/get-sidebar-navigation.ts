@@ -1,6 +1,13 @@
 import { PermissionEnum } from "@/lib/enums/PermissionEnum";
 import { getUserPermissionNames } from "@/lib/services/permissions/get-user-permission-names";
-import { Badge, Box, DollarSign, LucideProps, User } from "lucide-react";
+import {
+  Badge,
+  Box,
+  DollarSign,
+  LayoutDashboard,
+  LucideProps,
+  User,
+} from "lucide-react";
 import { ForwardRefExoticComponent, RefAttributes } from "react";
 
 export default async function getSidebarNavigation(): Promise<
@@ -35,13 +42,19 @@ const menuItems: {
   permissions: string[];
 }[] = [
   {
+    name: "Dashboard",
+    href: "/dashboard",
+    icon: LayoutDashboard,
+    permissions: [PermissionEnum.DASHBOARD],
+  },
+  {
     name: "Kategori Produk",
     href: "/product-categories",
     icon: Badge,
     permissions: [PermissionEnum.PRODUCT_CATEGORY_INDEX],
   },
   {
-    name: "Pelanggan",
+    name: "Pengguna",
     href: "/users",
     icon: User,
     permissions: [PermissionEnum.USER_INDEX],

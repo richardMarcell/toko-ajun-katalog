@@ -1,6 +1,8 @@
 import { PermissionEnum } from "@/lib/enums/PermissionEnum";
 
 export const ownerPermissions = [
+  PermissionEnum.DASHBOARD,
+
   PermissionEnum.PRODUCT_CATEGORY_INDEX,
   PermissionEnum.PRODUCT_CATEGORY_CREATE,
   PermissionEnum.PRODUCT_CATEGORY_STORE,
