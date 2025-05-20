@@ -1,6 +1,7 @@
 import { PermissionEnum } from "@/lib/enums/PermissionEnum";
 import { getUserPermissionNames } from "@/lib/services/permissions/get-user-permission-names";
 import {
+  Badge,
   Box,
   BoxSelectIcon,
   DollarSign,
@@ -41,9 +42,9 @@ const menuItems: {
   permissions: string[];
 }[] = [
   {
-    name: "Kategori Product",
+    name: "Kategori Produk",
     href: "/product-categories",
-    icon: BoxSelectIcon,
+    icon: Badge,
     permissions: [PermissionEnum.PRODUCT_CATEGORY_INDEX],
   },
   {

@@ -6,7 +6,7 @@ import { Session } from "next-auth";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
-export function MainLayout({
+export function OwnerLayout({
   children,
   session,
 }: {

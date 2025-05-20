@@ -5,7 +5,6 @@ import { useSidebarStore } from "@/store/useSidebarStore";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { LucideProps } from "lucide-react";
 import { Session } from "next-auth";
-import Image from "next/image";
 import {
   ForwardRefExoticComponent,
   RefAttributes,
@@ -61,23 +60,21 @@ const Sidebar = ({ session }: { session: Session | null }) => {
           onClick={toggleSidebar}
           className="flex h-full w-full items-center px-4"
         >
-          <div className="h-6 w-6 flex-shrink-0">
-            <Image
-              src="/logo.svg"
-              alt="ChronoSpace Logo"
-              width={32}
-              height={32}
-            />
-          </div>
+          {isCollapsed && (
+            <div className="text-2xl font-black transition-all duration-300">
+              <span>T</span>
+              <span className="text-red-600">A</span>
+            </div>
+          )}
           <span
             className={cn(
-              "ml-3 flex-shrink-0 text-xl font-semibold text-blue-600 transition-all duration-300",
+              "ml-3 flex-shrink-0 text-2xl font-black text-black transition-all duration-300",
               isCollapsed
                 ? "-translate-x-10 opacity-0"
                 : "translate-x-0 opacity-100",
             )}
           >
-            Satelite
+            Toko<span className="text-red-600">Ajun</span>
           </span>
         </button>
       </div>

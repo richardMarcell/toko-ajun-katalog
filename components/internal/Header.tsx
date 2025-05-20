@@ -14,31 +14,16 @@ const Header = ({ session }: { session: Session | null }) => {
   const [showUserMenu, setShowUserMenu] = useState(false);
 
   const userName = session?.user?.name || "Guest";
+  const userEmail = session?.user.email || "-";
 
   return (
     <header
       className={cn(
-        "fixed right-0 top-0 z-30 flex h-16 items-center justify-between border-b bg-white px-6 transition-all duration-300",
+        "fixed right-0 top-0 z-30 flex h-16 items-center justify-end border-b bg-white px-6 transition-all duration-300",
         isCollapsed ? "left-16" : "left-64",
       )}
     >
-      <div className="relative">
-        <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-qubu_dark_gray" />
-        <input
-          type="search"
-          placeholder="Search..."
-          autoComplete="off"
-          className="w-80 rounded-lg border py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-qubu_blue"
-        />
-      </div>
       <div className="flex items-center gap-6">
-        <button className="relative">
-          <Bell className="h-5 w-5 text-gray-600" />
-          <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs text-white">
-            2
-          </span>
-        </button>
-
         <div className="relative">
           <button
             onClick={() => setShowUserMenu(!showUserMenu)}
@@ -55,7 +40,8 @@ const Header = ({ session }: { session: Session | null }) => {
                 </>
               ) : (
                 <>
-                  <p className="font-medium">{userName}</p>
+                  <p className="font-bold">{userName}</p>
+                  <p className="font-medium text-xs">{userEmail}</p>
                 </>
               )}
             </div>
