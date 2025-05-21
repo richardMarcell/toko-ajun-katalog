@@ -5,7 +5,7 @@ import { users } from "@/db/schema";
 import { PermissionEnum } from "@/lib/enums/PermissionEnum";
 import { getUserAuthenticated } from "@/lib/services/auth/get-user-authenticated";
 import { can } from "@/lib/services/permissions/can";
-import { ServerActionResponse } from "@/types/domains/server-action";
+import { ServerActionResponse } from "@/types/server-action";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -39,7 +39,7 @@ export default async function updateUserActiveStatus(
   if (!user) redirect("/auth/login");
 
   await can({
-    permissionNames: [PermissionEnum.BACK_OFFICE_USER_UPDATE],
+    permissionNames: [PermissionEnum.USER_UPDATE],
     user: user,
   });
 
@@ -70,7 +70,7 @@ export default async function updateUserActiveStatus(
       }
     });
 
-    revalidatePath(`/back-office/users`);
+    revalidatePath(`/users`);
 
     return {
       status: "success",
