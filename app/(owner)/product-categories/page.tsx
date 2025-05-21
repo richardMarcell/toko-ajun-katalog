@@ -13,6 +13,8 @@ import { TableListProductCategories } from "./_components/table-list-product-cat
 import PaginationPage from "@/components/internal/PaginationPage";
 import { getProductCategories } from "./_repositories/get-product-categories";
 import { BackOfficeSearchParams } from "@/types/back-office-search-params";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default async function ProductCategoriesIndexPage({
   searchParams,
@@ -37,6 +39,12 @@ export default async function ProductCategoriesIndexPage({
 
   return (
     <SettingCard title="Kategori Produk" breadcrumb={<PageBreadcrumb />}>
+      <Button className="bg-blue-600" asChild>
+        <Link href={"/product-categories/create"}>
+          + Tambah Kategori Produk Baru
+        </Link>
+      </Button>
+
       <FilterProductCategory />
 
       <TableListProductCategories
@@ -56,7 +64,7 @@ export default async function ProductCategoriesIndexPage({
 function PageBreadcrumb() {
   return (
     <Breadcrumb>
-      <BreadcrumbList className="text-md text-qubu_blue">
+      <BreadcrumbList className="text-md text-blue-600">
         <BreadcrumbItem>Kategori Produk</BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>

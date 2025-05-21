@@ -9,7 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { ProductCategory } from "@/types/product-category";
-import { View } from "lucide-react";
+import { Edit } from "lucide-react";
 import Link from "next/link";
 
 export function TableListProductCategories({
@@ -40,8 +40,8 @@ export function TableListProductCategories({
                   className="m-0 p-0 text-green-600"
                   asChild
                 >
-                  <Link href={`/product-categories/${productCategory.id}`}>
-                    <View />
+                  <Link href={`/product-categories/${productCategory.id}/edit`}>
+                    <Edit />
                   </Link>
                 </Button>
               </div>

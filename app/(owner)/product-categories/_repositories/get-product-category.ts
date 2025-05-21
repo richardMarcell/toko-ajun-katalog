@@ -3,7 +3,7 @@ import { productCategories } from "@/db/schema";
 import { ProductCategory } from "@/types/product-category";
 import { eq } from "drizzle-orm";
 
-export async function getUser({
+export async function getProductCategory({
   productCategoryId,
 }: {
   productCategoryId: string;

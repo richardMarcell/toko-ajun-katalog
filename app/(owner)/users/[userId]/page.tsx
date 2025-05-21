@@ -82,7 +82,7 @@ export default async function UserShowPage({
 async function PageBreadcrumb({ user }: { user: User }) {
   return (
     <Breadcrumb>
-      <BreadcrumbList className="text-md text-qubu_blue">
+      <BreadcrumbList className="text-md text-blue-600">
         <BreadcrumbItem>
           <Link href={`/users`}>Pengguna</Link>
         </BreadcrumbItem>

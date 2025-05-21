@@ -1,4 +1,5 @@
 import { permissionSeeder } from "./seeders/permissions";
+import { productCategorySeeder } from "./seeders/product-categories";
 import { roleHasPermissionSeeder } from "./seeders/role-has-permissions";
 import { roleSeeder } from "./seeders/roles";
 import { userSeeder } from "./seeders/users";
@@ -17,6 +18,9 @@ async function main() {
 
   console.log("Seed data user....\n");
   await userSeeder();
+
+  console.log("Seed data product categories....\n");
+  await productCategorySeeder();
 
   console.log("Seed Data Success!!");
 

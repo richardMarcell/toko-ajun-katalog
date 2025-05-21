@@ -54,7 +54,7 @@ export default async function UserIndexPage({
 function PageBreadcrumb() {
   return (
     <Breadcrumb>
-      <BreadcrumbList className="text-md text-qubu_blue">
+      <BreadcrumbList className="text-md text-blue-600">
         <BreadcrumbItem>Pelanggan</BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
