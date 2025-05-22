@@ -17,7 +17,7 @@ export default async function RegisterPage() {
 
           <div className="text-center">
             Sudah punya akun? Klik{" "}
-            <Link className="text-blue-600" href={"/auth/register"}>
+            <Link className="text-blue-600" href={"/auth/login"}>
               disini
             </Link>
           </div>
