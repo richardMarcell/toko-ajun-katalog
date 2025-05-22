@@ -34,7 +34,7 @@ export function FormLogin() {
 
     if (response?.ok) {
       toast("Berhasil Login", {
-        description: "Anda akan diarahkan ke panel Satelite",
+        description: "Anda akan diarahkan ke halaman tujuan",
         duration: 1000,
       });
 
