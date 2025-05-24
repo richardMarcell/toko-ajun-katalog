@@ -10,14 +10,17 @@ import {
 } from "@/components/ui/table";
 import { Product } from "@/types/product";
 import { Edit } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export function TableListProducts({
   products,
   offset,
+  urlLocal,
 }: {
   products: Product[];
   offset: number;
+  urlLocal: string;
 }) {
   return (
     <Table>
@@ -34,7 +37,17 @@ export function TableListProducts({
         {products.map((product, index) => (
           <TableRow key={product.id}>
             <TableCell>{offset + index + 1}</TableCell>
-            <TableCell>{product.name}</TableCell>
+            <TableCell className="flex items-center gap-2">
+              <Image
+                src={`${urlLocal}/${product.image}`}
+                alt={product.name}
+                width={100}
+                height={100}
+                loading="lazy"
+                className="object-cover"
+              />
+              <div>{product.name}</div>
+            </TableCell>
             <TableCell>{product.code}</TableCell>
             <TableCell>{product.description}</TableCell>
             <TableCell>
@@ -44,7 +57,7 @@ export function TableListProducts({
                   className="m-0 p-0 text-green-600"
                   asChild
                 >
-                  <Link href={`/product/${product.id}/edit`}>
+                  <Link href={`/products/${product.id}/edit`}>
                     <Edit />
                   </Link>
                 </Button>

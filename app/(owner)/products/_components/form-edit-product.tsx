@@ -1,9 +1,21 @@
 "use client";
 
+import InputImageUpload from "@/components/internal/InputImageUpload";
+import InputMoney from "@/components/internal/InputMoney";
 import ValidationErrorMessage from "@/components/internal/ValidationErrorMessage";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { Product } from "@/types/product";
+import { ProductCategory } from "@/types/product-category";
 import { redirect } from "next/navigation";
 import {
   FormEvent,
@@ -14,31 +26,18 @@ import {
 } from "react";
 import { toast } from "sonner";
 import { initialValue } from "../../../../repositories/initial-value-form-state";
-import storeProductCategory from "../create/_actions/store-product";
-import { Textarea } from "@/components/ui/textarea";
-import { ProductCategory } from "@/types/product-category";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import InputMoney from "@/components/internal/InputMoney";
-import InputImageUpload from "@/components/internal/InputImageUpload";
-import { Product } from "@/types/product";
+import updateProduct from "../[productId]/edit/_actions/update-product";
 
 export default function FormEditProduct({
   productCategories,
   product,
+  urlLocal,
 }: {
   productCategories: ProductCategory[];
   product: Product;
+  urlLocal: string;
 }) {
-  const [state, formAction] = useActionState(
-    storeProductCategory,
-    initialValue,
-  );
+  const [state, formAction] = useActionState(updateProduct, initialValue);
 
   const [price, setPrice] = useState<number>(Number(product.price));
 
@@ -47,6 +46,7 @@ export default function FormEditProduct({
 
     startTransition(() => {
       const formData = new FormData(e.currentTarget);
+      formData.set("product_id", product.id.toString());
       formData.set("price", price.toString());
       formAction(formData);
     });
@@ -154,7 +154,7 @@ export default function FormEditProduct({
       <div>
         <Label htmlFor="image">Gambar</Label>
         <InputImageUpload
-          initialImage={product.image}
+          initialImage={`${urlLocal}/${product.image}`}
           id="image"
           name="image"
           autoComplete="off"

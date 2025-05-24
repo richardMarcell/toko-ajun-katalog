@@ -1,31 +1,35 @@
 "use server";
 
 import { db } from "@/db";
+import { products } from "@/db/schema";
 import { PermissionEnum } from "@/lib/enums/PermissionEnum";
 import { getUserAuthenticated } from "@/lib/services/auth/get-user-authenticated";
 import { can } from "@/lib/services/permissions/can";
 import { createSlugWithTimestamp, getAbsolutePath } from "@/lib/utils";
+import { Product } from "@/types/product";
 import { ServerActionResponse } from "@/types/server-action";
+import { eq } from "drizzle-orm";
+import { existsSync, mkdirSync, unlinkSync, writeFile } from "fs";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { existsSync, mkdirSync, writeFile } from "node:fs";
-import { join } from "node:path";
+import { join } from "path";
 import sharp from "sharp";
 import * as yup from "yup";
-import { storeProductValidationSchema } from "./_libs/store-product-validation-schema";
-import { products } from "@/db/schema";
+import { getProduct } from "../../../_repositories/get-product";
+import { updateProductValidationSchema } from "./_libs/update-product-validation-schema";
 
 type ValidatedValues = {
+  product_id: number;
   name: string;
   code: string;
   description: string;
   product_category_id: number;
   price: number;
-  image: File;
+  image?: File | null;
 };
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export default async function storeProduct(
+export default async function updateProduct(
   prevState: any,
   formData: FormData,
 ): Promise<ServerActionResponse> {
@@ -33,25 +37,33 @@ export default async function storeProduct(
   if (!user) redirect("/auth/login");
 
   await can({
-    permissionNames: [PermissionEnum.PRODUCT_CATEGORY_STORE],
+    permissionNames: [PermissionEnum.PRODUCT_UPDATE],
     user: user,
   });
 
   try {
     const validatedValues = await validateRequest(formData);
-    console.log(validatedValues);
 
     await db.transaction(async (tx) => {
-      const imagePath = await saveImage(validatedValues);
-
-      await tx.insert(products).values({
-        code: validatedValues.code,
-        description: validatedValues.description,
-        image: imagePath,
-        name: validatedValues.name,
-        price: validatedValues.price.toString(),
-        product_category_id: BigInt(validatedValues.product_category_id),
+      const { product } = await getProduct({
+        productId: validatedValues.product_id.toString(),
       });
+
+      if (!product) throw new Error("Product doesn't exists");
+
+      const image = await saveImage(validatedValues, product);
+
+      await tx
+        .update(products)
+        .set({
+          code: validatedValues.code,
+          name: validatedValues.name,
+          description: validatedValues.description,
+          price: validatedValues.price.toString(),
+          product_category_id: BigInt(validatedValues.product_category_id),
+          image: image,
+        })
+        .where(eq(products.id, BigInt(validatedValues.product_id)));
     });
 
     const url = "/products";
@@ -60,7 +72,7 @@ export default async function storeProduct(
 
     return {
       status: "success",
-      message: "Berhasil menyimpan data produk baru",
+      message: "Berhasil menyimpan perubahan data produk",
       url: url,
     };
   } catch (error: any) {
@@ -69,7 +81,7 @@ export default async function storeProduct(
       return {
         status: "error",
         message:
-          "Gagal menyimpan data produk baru. Terjadi kesalahan pada sistem",
+          "Gagal menyimpan perubahan data produk. Terjadi kesalahan pada sistem",
       };
     }
 
@@ -85,15 +97,16 @@ export default async function storeProduct(
     return {
       status: "error",
       message:
-        "Gagal menyimpan data produk baru. Silahkan periksa kembali inputan yang Anda masukkan",
+        "Gagal menyimpan perubahan data produk. Silahkan periksa kembali inputan yang Anda masukkan",
       errors: errors,
     };
   }
 }
 
 async function validateRequest(formData: FormData): Promise<ValidatedValues> {
-  const validatedValues = await storeProductValidationSchema.validate(
+  const validatedValues = await updateProductValidationSchema.validate(
     {
+      product_id: formData.get("product_id"),
       name: formData.get("name"),
       code: formData.get("code"),
       description: formData.get("description"),
@@ -109,7 +122,13 @@ async function validateRequest(formData: FormData): Promise<ValidatedValues> {
   return validatedValues;
 }
 
-async function saveImage(validatedValues: ValidatedValues): Promise<string> {
+async function saveImage(
+  validatedValues: ValidatedValues,
+  product: Product,
+): Promise<string> {
+  if (!validatedValues.image) return product.image;
+  if (validatedValues.image.size < 1) return product.image;
+
   try {
     const imageSize = 1080;
     const imageValidated = validatedValues.image;
@@ -128,6 +147,11 @@ async function saveImage(validatedValues: ValidatedValues): Promise<string> {
 
     if (!existsSync(targetFolderPath)) {
       mkdirSync(targetFolderPath, { recursive: true });
+    }
+
+    const oldImagePath = getAbsolutePath(`/public/${product.image}`);
+    if (product.image && existsSync(oldImagePath)) {
+      unlinkSync(oldImagePath);
     }
 
     const path = join(targetFolderPath, "/", filename);

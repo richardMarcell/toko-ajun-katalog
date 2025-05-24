@@ -38,6 +38,8 @@ export default async function ProductEditPage({
 
   const { productCategories } = await getProductCategories();
 
+  const urlLocal = process.env.URL_LOCAL as string;
+
   return (
     <SettingCard
       title="Edit Data Produk"
@@ -46,6 +48,7 @@ export default async function ProductEditPage({
       <FormEditProduct
         product={product}
         productCategories={productCategories}
+        urlLocal={urlLocal}
       />
     </SettingCard>
   );

@@ -40,6 +40,8 @@ export default async function ProductIndexPage({
     await getProducts({ searchParams: productSearchParams });
   const { productCategories } = await getProductCategories();
 
+  const urlLocal = process.env.URL_LOCAL as string
+
   return (
     <SettingCard title="Kategori Produk" breadcrumb={<PageBreadcrumb />}>
       <Button className="bg-blue-600" asChild>
@@ -48,7 +50,7 @@ export default async function ProductIndexPage({
 
       <FilterProduct productCategories={productCategories} />
 
-      <TableListProducts products={products} offset={offset} />
+      <TableListProducts urlLocal={urlLocal} products={products} offset={offset} />
 
       <PaginationPage
         currentPage={currentPage}
