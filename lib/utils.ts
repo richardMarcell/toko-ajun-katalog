@@ -145,3 +145,27 @@ export function roundCurrency(amount: number): number {
 
   return Math.round(amount / factor) * factor;
 }
+
+export function createSlugWithTimestamp(title: string) {
+  const date = new Date();
+  const dateString = date.toISOString().split("T")[0];
+  const timeString = date.toTimeString().split(" ")[0].replace(/:/g, "");
+  const slugDate = dateString.replace(/-/g, "");
+
+  return `${title.toString().toLowerCase()}-${slugDate}-${timeString}`
+    .replace(/\s+/g, "-")
+    .replace(/[^\w\-]+/g, "")
+    .replace(/\-\-+/g, "-")
+    .replace(/^-+/, "")
+    .replace(/-+$/, "");
+}
+
+export function getAbsoluteRootPath(): string {
+  return process.cwd();
+}
+
+export function getAbsolutePath(filePath: string): string {
+  const path = getAbsoluteRootPath();
+
+  return `${path}${filePath}`;
+}

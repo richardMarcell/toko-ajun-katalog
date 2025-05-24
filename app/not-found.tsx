@@ -10,7 +10,7 @@ export default function NotFound() {
       <p className="mb-4 text-gray-600">
         Maaf, halaman yang Anda cari tidak tersedia atau telah dipindahkan.
       </p>
-      <Button asChild className="bg-qubu_blue">
+      <Button asChild className="bg-blue-600">
         <Link href="/redirect">Kembali</Link>
       </Button>
     </div>
