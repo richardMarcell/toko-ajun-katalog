@@ -13,11 +13,11 @@ export default function Home() {
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="flex w-full flex-col justify-center space-y-6 text-white xl:w-1/2"
         >
-          <h1 className="text-center text-xl font-extrabold leading-snug sm:text-5xl lg:text-6xl xl:text-left">
+          <h1 className="text-center text-4xl font-extrabold leading-snug sm:text-5xl lg:text-6xl xl:text-left">
             Belanja Bahan Pokok Harian di{" "}
             <span className="text-[#C4E980]">Toko Kelontong Terlengkap</span>
           </h1>
-          <p className="text-center text-base leading-relaxed sm:text-lg xl:text-left">
+          <p className="text-center text-sm leading-relaxed sm:text-lg xl:text-left">
             Temukan kebutuhan rumah tangga Anda mulai dari sembako, peralatan
             mandi, makanan ringan, hingga minuman segar. Toko kelontong kami
             siap memenuhi kebutuhan harian Anda dengan harga terjangkau dan
