@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "drizzle-kit-seed": "tsx --env-file .env ./db/seed.ts"
+    "drizzle-kit-seed": "tsx --env-file .env ./db/seed.ts",
+    "drizzle-kit-refresh": "tsx --env-file .env ./db/reset-database.ts && npx drizzle-kit push && npm run drizzle-kit-seed"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.4",
