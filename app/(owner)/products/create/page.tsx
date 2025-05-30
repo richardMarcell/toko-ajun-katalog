@@ -26,10 +26,7 @@ export default async function ProductCreatePage() {
   const { productCategories } = await getProductCategories();
 
   return (
-    <SettingCard
-      title="Tambah Kategori Produk Baru"
-      breadcrumb={<PageBreadcrumb />}
-    >
+    <SettingCard title="Tambah Produk Baru" breadcrumb={<PageBreadcrumb />}>
       <FormCreateProduct productCategories={productCategories} />
     </SettingCard>
   );
