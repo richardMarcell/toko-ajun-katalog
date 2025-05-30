@@ -8,12 +8,16 @@ import {
 } from "drizzle-orm/mysql-core";
 import { salesDetails } from "./sales-details";
 import { users } from "./users";
+import { SalesStatusEnum } from "@/lib/enums/SalesStatusEnum";
 
 export const sales = mysqlTable("sales", {
   id: bigint("id", { mode: "bigint", unsigned: true })
     .primaryKey()
     .autoincrement(),
   code: varchar("code", { length: 255 }).notNull().unique(),
+  status: varchar("status", { length: 255 })
+    .notNull()
+    .default(SalesStatusEnum.OPEN),
   grand_total: decimal("grand_total", {
     precision: 24,
     scale: 8,

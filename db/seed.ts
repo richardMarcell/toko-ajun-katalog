@@ -3,6 +3,7 @@ import { productCategorySeeder } from "./seeders/product-categories";
 import { productSeeder } from "./seeders/products";
 import { roleHasPermissionSeeder } from "./seeders/role-has-permissions";
 import { roleSeeder } from "./seeders/roles";
+import { salesSeeder } from "./seeders/sales-seeder";
 import { userSeeder } from "./seeders/users";
 
 async function main() {
@@ -25,6 +26,9 @@ async function main() {
 
   console.log("Seed data products....\n");
   await productSeeder();
+
+  console.log("Seed data sales....\n");
+  await salesSeeder();
 
   console.log("Seed Data Success!!");
 

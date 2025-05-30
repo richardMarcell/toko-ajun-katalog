@@ -6,7 +6,6 @@ import {
   longtext,
   mysqlTable,
   timestamp,
-  varchar,
 } from "drizzle-orm/mysql-core";
 import { products } from "./products";
 import { sales } from "./sales";
@@ -21,7 +20,6 @@ export const salesDetails = mysqlTable("sales_details", {
   product_id: bigint("product_id", { mode: "bigint", unsigned: true })
     .notNull()
     .references(() => products.id, { onDelete: "restrict" }),
-  order_status: varchar("order_status", { length: 255 }), // Menyimpan status pesanan pada penjualan pos resto atau food dengan nilai PREPARING, SERVE
   note: longtext("note"),
   qty: int("qty", { unsigned: true }).notNull().default(0),
   price: decimal("price", { precision: 24, scale: 8 }).notNull(),
