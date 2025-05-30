@@ -48,11 +48,11 @@ const variantConfig = {
   },
   pay: {
     icon: <Banknote />,
-    style: "bg-qubu_green",
+    style: "bg-green-600",
   },
   create: {
     icon: <Plus />,
-    style: "bg-qubu_blue",
+    style: "bg-blue-600",
   },
   print: {
     icon: <Printer />,
@@ -60,6 +60,6 @@ const variantConfig = {
   },
   delete: {
     icon: <Trash />,
-    style: "bg-qubu_red",
+    style: "bg-red-600",
   },
 };

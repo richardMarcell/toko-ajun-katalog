@@ -30,14 +30,14 @@ export function AlertDialogMessage({
       <AlertDialogContent className="rounded-lg p-6 shadow-xl">
         <AlertDialogHeader className="flex flex-col items-center space-y-3">
           {isSuccess ? (
-            <CircleCheck size={60} className="text-qubu_green" />
+            <CircleCheck size={60} className="text-green-600" />
           ) : (
-            <CircleX size={60} className="text-qubu_red" />
+            <CircleX size={60} className="text-red-600" />
           )}
           <AlertDialogTitle
             className={cn(
               "text-3xl font-semibold",
-              isSuccess ? "text-qubu_green" : "text-qubu_red",
+              isSuccess ? "text-green-600" : "text-red-600",
             )}
           >
             {isSuccess ? "SUCCESS" : "ERROR"}
@@ -53,8 +53,8 @@ export function AlertDialogMessage({
             className={cn(
               "w-full rounded-md py-3 text-lg font-semibold transition-all",
               isSuccess
-                ? "bg-qubu_green hover:bg-green-700 focus:ring focus:ring-green-300"
-                : "bg-qubu_red hover:bg-red-700 focus:ring focus:ring-red-300",
+                ? "bg-green-600 hover:bg-green-700 focus:ring focus:ring-green-300"
+                : "bg-red-600 hover:bg-red-700 focus:ring focus:ring-red-300",
             )}
             onClick={onClose}
           >
