@@ -18,7 +18,7 @@ export async function productSeeder() {
       {
         code: "BPK-0002",
         description: "Cemilang roti dengan biskuit dan krim vanilla pilihan",
-        image: "/oreo.jpg",
+        image: "/oreo.png",
         name: "Oreo",
         price: "12000",
         product_category_id: BigInt(1),

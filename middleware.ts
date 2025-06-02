@@ -15,6 +15,7 @@ export default async function middleware(
   const pathname = req.nextUrl.pathname;
   if (pathname.startsWith("/auth/login")) return NextResponse.next();
   if (pathname == "/") return NextResponse.next();
+  if (pathname == "/order") return NextResponse.next();
   if (pathname == "/auth/register") return NextResponse.next();
 
   /* --- Check client session available on database --- */
