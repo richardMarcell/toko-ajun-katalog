@@ -11,11 +11,11 @@ async function resetDatabase() {
 
   for (const row of tables[0]) {
     const tableName = row.TABLE_NAME;
-    await db.execute(sql.raw(`TRUNCATE TABLE \`${tableName}\``));
+    await db.execute(sql.raw(`DROP TABLE IF EXISTS \`${tableName}\``));
   }
 
   await db.execute(sql`SET FOREIGN_KEY_CHECKS = 1`);
-  console.log("✅ All tables truncated");
+  console.log("✅ All tables dropped");
   process.exit(0);
 }
 

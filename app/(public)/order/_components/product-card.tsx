@@ -1,10 +1,9 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { formatNumberToCurrency } from "@/lib/utils";
 import { Product } from "@/types/product";
-import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
+import { DialogFormOrderProduct } from "./dialog-form-order-product";
 
 export function ProductCard({
   product,
@@ -37,10 +36,7 @@ export function ProductCard({
 
       {isUserAuthorizeToShop && (
         <div className="absolute bottom-4 right-4">
-          <Button className="flex items-center gap-2 bg-[#C4E980] px-4 py-2 text-xs font-semibold text-[#204B4E] hover:bg-[#D3EDA4]">
-            <ShoppingCart size={16} />
-            Tambah
-          </Button>
+          <DialogFormOrderProduct product={product} />
         </div>
       )}
     </div>

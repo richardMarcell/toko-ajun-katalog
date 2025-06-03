@@ -45,8 +45,9 @@ const PublicHeader = ({ session }: { session: Session | null }) => {
               <Button
                 variant="default"
                 className="flex items-center gap-2 bg-[#204B4E] text-white hover:bg-[#18393B]"
+                asChild
               >
-                <Link href={"/cart"}>
+                <Link href={"/carts"}>
                   <ShoppingCart size={18} />
                 </Link>
               </Button>
