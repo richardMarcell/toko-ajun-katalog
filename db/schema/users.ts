@@ -9,6 +9,7 @@ import {
 import { sales } from "./sales";
 import { sessions } from "./sessions";
 import { userHasRoles } from "./user-has-roles";
+import { carts } from "./carts";
 
 export const users = mysqlTable("users", {
   id: bigint("id", { mode: "bigint", unsigned: true })
@@ -24,6 +25,7 @@ export const users = mysqlTable("users", {
 });
 
 export const userRelations = relations(users, ({ many }) => ({
+  carts: many(carts),
   userHasRoles: many(userHasRoles),
   sales: many(sales),
   sessions: many(sessions),

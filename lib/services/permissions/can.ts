@@ -11,9 +11,11 @@ export async function can({
   isRedirectToForbiddenPage = true,
 }: {
   permissionNames: string[];
-  user: User;
+  user: User | null;
   isRedirectToForbiddenPage?: boolean;
 }): Promise<never | boolean> {
+  if (!user) return false;
+
   const userRoleIds = await getUserRoleId({ userId: BigInt(user.id) });
   const isAuthorized = await getUserAuthorized({
     permissionNames,

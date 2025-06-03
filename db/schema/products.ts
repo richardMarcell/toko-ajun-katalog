@@ -9,6 +9,7 @@ import {
 } from "drizzle-orm/mysql-core";
 import { productCategories } from "./product-categories";
 import { salesDetails } from "./sales-details";
+import { carts } from "./carts";
 
 export const products = mysqlTable("products", {
   id: bigint("id", { mode: "bigint", unsigned: true })
@@ -31,6 +32,7 @@ export const products = mysqlTable("products", {
 
 export const productRelations = relations(products, ({ many, one }) => ({
   salesDetails: many(salesDetails),
+  carts: many(carts),
 
   productCategory: one(productCategories, {
     fields: [products.product_category_id],
