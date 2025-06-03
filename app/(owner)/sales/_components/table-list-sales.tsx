@@ -52,7 +52,9 @@ export function TableListSales({ sales }: { sales: SaleIncluRelationship[] }) {
 
   return (
     <div>
-      <Button onClick={handlePrint}>Cetak Laporan</Button>
+      <Button disabled={sales.length === 0} onClick={handlePrint}>
+        Cetak Laporan
+      </Button>
       <Table className="mt-4">
         <TableHeader>
           <TableRow>
