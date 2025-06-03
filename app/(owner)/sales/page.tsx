@@ -1,4 +1,3 @@
-import PaginationPage from "@/components/internal/PaginationPage";
 import SettingCard from "@/components/internal/SettingCard";
 import {
   Breadcrumb,
@@ -12,14 +11,14 @@ import { BackOfficeSearchParams } from "@/types/back-office-search-params";
 import { redirect } from "next/navigation";
 import { FilterSales } from "./_components/filter-sales";
 import { TableListSales } from "./_components/table-list-sales";
-import { getSales } from "./_repositories/get-sales";
+import { getSalesReport } from "./_repositories/get-sales-report";
 
 export default async function SalesIndexPage({
   searchParams,
 }: {
   searchParams: Promise<
     BackOfficeSearchParams<{
-      userId: string;
+      status: string;
       startDate: string;
       endDate: string;
     }>
@@ -34,20 +33,16 @@ export default async function SalesIndexPage({
   });
 
   const salesSearchParams = await searchParams;
-  const { currentPage, currentPageSize, lastPage, offset, sales } =
-    await getSales({ searchParams: salesSearchParams });
+
+  const salesReport = await getSalesReport({
+    searchParams: salesSearchParams,
+  });
 
   return (
     <SettingCard title="Kelola Penjualan" breadcrumb={<PageBreadcrumb />}>
       <FilterSales />
 
-      <TableListSales sales={sales} offset={offset} />
-
-      <PaginationPage
-        currentPage={currentPage}
-        currentPageSize={currentPageSize}
-        lastPage={lastPage}
-      />
+      <TableListSales sales={salesReport} />
     </SettingCard>
   );
 }
