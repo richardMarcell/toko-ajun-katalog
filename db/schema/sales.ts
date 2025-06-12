@@ -9,6 +9,7 @@ import {
 import { salesDetails } from "./sales-details";
 import { users } from "./users";
 import { SalesStatusEnum } from "@/lib/enums/SalesStatusEnum";
+import { saleRatings } from "./sale-ratings";
 
 export const sales = mysqlTable("sales", {
   id: bigint("id", { mode: "bigint", unsigned: true })
@@ -35,4 +36,5 @@ export const salesRelations = relations(sales, ({ many, one }) => ({
     fields: [sales.created_by],
     references: [users.id],
   }),
+  saleRating: one(saleRatings),
 }));

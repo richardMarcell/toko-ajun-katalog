@@ -1,11 +1,12 @@
 import { db } from "@/db";
-import { sales, users } from "@/db/schema";
+import { saleRatings, sales, users } from "@/db/schema";
 import { SalesStatusEnum } from "@/lib/enums/SalesStatusEnum";
-import { count, eq } from "drizzle-orm";
+import { count, eq, sql } from "drizzle-orm";
 
 type Dashboard = {
   totalUsers: number;
   totalSales: number;
+  averageRating: number;
   totalSalesOpen: number;
   totalSalesClosed: number;
   totalSalesPreparing: number;
@@ -15,6 +16,7 @@ type Dashboard = {
 export async function getDashboardData(): Promise<Dashboard> {
   const totalUsers = await getTotalUsers();
   const totalSales = await getTotalSales();
+  const averageRating = await getAverageRating();
   const totalSalesOpen = await getTotalSalesOpen();
   const totalSalesClosed = await getTotalSalesClosed();
   const totalSalesPreparing = await getTotalSalesPreparing();
@@ -23,6 +25,7 @@ export async function getDashboardData(): Promise<Dashboard> {
   return {
     totalUsers,
     totalSales,
+    averageRating,
     totalSalesOpen,
     totalSalesClosed,
     totalSalesPreparing,
@@ -47,6 +50,15 @@ async function getTotalSales(): Promise<number> {
     .from(sales);
 
   return Number(totalSales[0].total);
+}
+
+async function getAverageRating(): Promise<number> {
+  const averageRating = await db
+    .select({
+      average: sql<number>`AVG(${saleRatings.rating})`.as("total"),
+    })
+    .from(saleRatings);
+  return Number(averageRating[0].average) || 0;
 }
 
 async function getTotalSalesOpen(): Promise<number> {

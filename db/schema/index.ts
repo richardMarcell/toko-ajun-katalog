@@ -4,6 +4,7 @@ export * from "./product-categories";
 export * from "./products";
 export * from "./role-has-permissions";
 export * from "./roles";
+export * from "./sale-ratings";
 export * from "./sales";
 export * from "./sales-details";
 export * from "./sessions";

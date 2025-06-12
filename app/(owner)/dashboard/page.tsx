@@ -10,7 +10,7 @@ import { can } from "@/lib/services/permissions/can";
 import { redirect } from "next/navigation";
 import { getDashboardData } from "./_repositories/get-dashboard-data";
 import { QuickStat } from "./_components/quick-stat";
-import { DollarSignIcon, User } from "lucide-react";
+import { DollarSignIcon, Star, User } from "lucide-react";
 import { SubQuickStat } from "./_components/sub-quick-stat";
 import {
   getSalesStatusCase,
@@ -31,6 +31,7 @@ export default async function DashboardPage() {
   const {
     totalSales,
     totalSalesClosed,
+    averageRating,
     totalSalesOpen,
     totalSalesPreparing,
     totalSalesReady,
@@ -41,7 +42,7 @@ export default async function DashboardPage() {
 
   return (
     <SettingCard title="Dashboard" breadcrumb={<PageBreadcrumb />}>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-3 gap-4">
         <QuickStat
           icon={<User className="text-blue-600" />}
           description={`Total keseluruhan pengguna Toko Ajun`}
@@ -53,6 +54,12 @@ export default async function DashboardPage() {
           description={`Total keseluruhan Penjualan yang terjadi di Toko Ajun`}
           title="Penjualan"
           totalData={totalSales}
+        />
+        <QuickStat
+          icon={<Star className="text-blue-600" />}
+          description={`Rating yang diberikan oleh pengguna Toko Ajun`}
+          title="Rating"
+          totalData={Number(averageRating.toFixed(2))}
         />
       </div>
 

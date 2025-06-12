@@ -3,6 +3,7 @@ import { sales } from "@/db/schema";
 import { Product } from "@/types/product";
 import { Sale } from "@/types/sale";
 import { SaleDetail } from "@/types/sale-detail";
+import { SaleRating } from "@/types/sale-rating";
 import { User } from "@/types/user";
 import { eq } from "drizzle-orm";
 
@@ -11,6 +12,7 @@ export type SaleIncluRelationship = Sale & {
     product: Product;
   })[];
   user: User;
+  saleRating: SaleRating | null;
 };
 
 export async function getSale({
@@ -27,6 +29,7 @@ export async function getSale({
         },
       },
       user: true,
+      saleRating: true,
     },
   });
 
